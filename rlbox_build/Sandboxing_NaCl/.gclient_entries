@@ -1,0 +1,16 @@
+entries = {
+  'native_client': 'https://chromium.googlesource.com/native_client/src/native_client.git',
+  'breakpad': 'https://chromium.googlesource.com/breakpad/breakpad.git@5f638d532312685548d5033618c8a36f73302d0a',
+  'build': 'https://chromium.googlesource.com/chromium/src/build.git@f671d3baeb64d9dba628ad582e867cf1aebc0207',
+  'build_overrides': 'https://chromium.googlesource.com/native_client/src/build_overrides.git@6b368c7b14c2f573e15d8e1386f162e9cafca58f',
+  'buildtools': 'https://chromium.googlesource.com/chromium/buildtools.git@39b1db2ab4aa4b2ccaa263c29bdf63e7c1ee28aa',
+  'testing/gtest': 'https://chromium.googlesource.com/external/github.com/google/googletest.git@6f8a66431cb592dad629028a50b3dd418a408c87',
+  'third_party': 'https://chromium.googlesource.com/native_client/src/third_party.git@d4e38e5faf600b39649025e5605d6e7f94518ea7',
+  'third_party/binutils': 'https://chromium.googlesource.com/chromium/src/third_party/binutils.git@8d77853bc9415bcb7bb4206fa2901de7603387db',
+  'third_party/lcov': 'https://chromium.googlesource.com/chromium/src/third_party/lcov.git@b37daf5968200da8ff520ce65c4e5bce4047dd15',
+  'third_party/lss': 'https://chromium.googlesource.com/linux-syscall-support.git@3f6478ac95edf86cd3da300c2c0d34a438f5dbeb',
+  'third_party/ragel': 'https://chromium.googlesource.com/native_client/deps/third_party/ragel.git@da42bb33f1b67c2d70b38ec1d2edf5263271b635',
+  'tools/clang': 'https://chromium.googlesource.com/chromium/src/tools/clang.git@05f306039aa5029fa88768690e5c512097419f9d',
+  'tools/gyp': 'https://chromium.googlesource.com/external/gyp.git@e7079f0e0e14108ab0dba58728ff219637458563',
+  'validator_snapshots': 'https://chromium.googlesource.com/native_client/src/validator_snapshots.git@ef053694ef9b0d98d9bed0b9bb649963084bfc81',
+}

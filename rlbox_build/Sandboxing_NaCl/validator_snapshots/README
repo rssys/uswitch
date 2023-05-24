@@ -1,0 +1,9 @@
+Directions on how files in this directory were generated:
+
+enuminsts-64-8150:
+
+   .> cd native_client
+   .> ./scons --mode=opt-linux platform=x86-64
+   .> cd native_client/src/trusted/validator/x86/testing/enuminsts
+   .> make BITS=64 NACLV=8150
+

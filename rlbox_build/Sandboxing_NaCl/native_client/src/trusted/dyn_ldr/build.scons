@@ -1,0 +1,28 @@
+# -*- python -*-
+# Copyright (c) 2013 The Native Client Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+Import('env')
+
+env.ComponentLibrary(
+    'dyn_ldr', 
+    ['dyn_ldr_lib.c'],
+    EXTRA_LIBS=[])
+
+env.ComponentProgram(
+    'dyn_ldr_test', 
+    ['testing/dyn_ldr_test.c'],
+    EXTRA_LIBS=['dyn_ldr','sel'])
+
+cpp_env = env.Clone(CXXFLAGS="-std=c++11")
+
+cpp_env.ComponentProgram(
+    'dyn_ldr_test_api', 
+    ['testing/dyn_ldr_test_api.cpp'],
+    EXTRA_LIBS=['dyn_ldr','sel'])
+
+cpp_env.ComponentProgram(
+	'dyn_ldr_benchmark',
+	['benchmark/dyn_ldr_benchmark.cpp'],
+	EXTRA_LIBS=['dyn_ldr','sel'])

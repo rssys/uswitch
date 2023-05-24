@@ -1,0 +1,11 @@
+**/*.1
+**/*.a
+**/*.o
+/.cproject
+/.project
+/nasm
+/ndisasm
+/.settings/
+/Makefile
+/config.status
+/config.log

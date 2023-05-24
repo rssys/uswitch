@@ -1,0 +1,13 @@
+{
+  "name": "hello-world-node",
+  "version": "0.0.0",
+  "description": "Node.JS RLBox example",
+  "main": "hello.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node-gyp rebuild"
+  },
+  "author": "Deian Stefan",
+  "license": "MIT",
+  "gypfile": true
+}

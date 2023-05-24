@@ -1,0 +1,12 @@
+Name: argparse - Python command-line parsing library
+Short Name: argparse
+URL: https://pypi.python.org/pypi/argparse 
+Version: 1.2.1
+License: Python's license (PSF v2)
+License File: argparse-1.2.1/doc/source/Python-License.txt
+Security Critical: no
+	
+Description: command-line parsing library for Python 2.6 (it's part of the
+             Python stdlib for 2.7+)
+	
+Local Modifications: None

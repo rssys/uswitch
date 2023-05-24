@@ -1,0 +1,15 @@
+# -*- python -*-
+# Copyright (c) 2012 The Native Client Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+Import('env')
+
+dyn_ldr_sandbox_init_nexe = env.ComponentLibrary('dyn_ldr_sandbox_init',
+                                       'dyn_ldr_sandbox_init.c',
+                                       EXTRA_LIBS=[])
+
+test_dyn_lib_nexe = env.ComponentProgram(
+    'test_dyn_lib', 
+    ['testing/test_dyn_lib.c'],
+    EXTRA_LIBS=[dyn_ldr_sandbox_init_nexe])

@@ -1,0 +1,2 @@
+#!/bin/sh
+exec "${REALGCC:-gcc}" "$@" -specs "/home/ubuntu/development/uswitch/musl/lib/musl-gcc.specs"

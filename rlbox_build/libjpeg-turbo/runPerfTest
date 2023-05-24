@@ -1,0 +1,67 @@
+if [ -z "$1" ]; then 
+	echo "Expected argument ./runPerfTest outputfile.txt"; 
+	exit 1; 
+fi
+
+cd builds 
+sleep 5
+
+for i in 1 2 3 4 5 6 7 8 9 10; do
+	echo "Round $i" | tee -a "../$1"
+	echo "=========" | tee -a "../$1"
+
+	echo -e "\nnon_nacl" | tee -a "../$1"
+	echo "------------" | tee -a "../$1"
+	make x64/run_dynamic_non_nacl | grep "time" | grep --invert-match "invocations" | tee -a "../$1"
+	sleep 5
+
+	echo -e "\nnon_nacl_simd" | tee -a "../$1"
+	echo "------------" | tee -a "../$1"
+	make x64/run_dynamic_non_nacl_simd | grep "time" | grep --invert-match "invocations" | tee -a "../$1"
+	sleep 5
+
+	echo -e "\nnacl" | tee -a "../$1"
+	echo "------------" | tee -a "../$1"
+	make x64/run_dynamic_nacl | grep "time" | grep --invert-match "invocations" | tee -a "../$1"
+	sleep 5
+
+	echo -e "\nnacl_simd" | tee -a "../$1"
+	echo "------------" | tee -a "../$1"
+	make x64/run_dynamic_nacl_simd | grep "time" | grep --invert-match "invocations" | tee -a "../$1"
+	sleep 5
+
+	echo -e "\nnacl_safe_api" | tee -a "../$1"
+	echo "------------" | tee -a "../$1"
+	make x64/run_dynamic_nacl_safe_api | grep "time" | grep --invert-match "invocations" | tee -a "../$1"
+	sleep 5
+
+	echo -e "\nnacl_simd_safe_api" | tee -a "../$1"
+	echo "------------" | tee -a "../$1"
+	make x64/run_dynamic_nacl_simd_safe_api | grep "time" | grep --invert-match "invocations" | tee -a "../$1"
+	sleep 5
+
+	echo -e "\nps" | tee -a "../$1"
+	echo "------------" | tee -a "../$1"
+	make x64/run_dynamic_ps | grep "time" | grep --invert-match "invocations" | tee -a "../$1"
+	sleep 5
+
+	echo -e "\nps_simd" | tee -a "../$1"
+	echo "------------" | tee -a "../$1"
+	make x64/run_dynamic_ps_simd | grep "time" | grep --invert-match "invocations" | tee -a "../$1"
+	sleep 5
+
+	echo -e "\nps_safe_api" | tee -a "../$1"
+	echo "------------" | tee -a "../$1"
+	make x64/run_dynamic_ps_safe_api | grep "time" | grep --invert-match "invocations" | tee -a "../$1"
+	sleep 5
+
+	echo -e "\nps_simd_safe_api" | tee -a "../$1"
+	echo "------------" | tee -a "../$1"
+	make x64/run_dynamic_ps_simd_safe_api | grep "time" | grep --invert-match "invocations" | tee -a "../$1"
+	sleep 5
+
+	echo -e "---------------------------------------------\n\n" | tee -a "../$1"
+done
+
+cd ..
+echo "Output results to $1"

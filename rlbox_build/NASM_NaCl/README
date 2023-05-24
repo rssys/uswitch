@@ -1,0 +1,53 @@
+A modification of the NASM assembler to support generation of instructions that are compliant with Google's Native Client (NaCl)'s rules.
+ - This can be built with the commands
+	 ./configure
+	 make
+ - The nasm binary is produced in the same folder
+
+To build assembly in a NACL compliant way, invoke NASM as you would normally, along with the additional flag '-nacl'
+	nasm -nacl jquantf-sse2.asm -o .libs/jquantf-sse2.o
+
+Note that the support for NACL is incomplete. The following NACL rules are supported
+- Generated instructions should not straddle 32 byte boundaries
+- Function blocks should be aligned to 32 bytes
+- Call instructions should be at the end of a 32 byte block
+- All ret instructions are replaced with 'pop, mask and jump' pattern
+
+Not yet supported
+- NaCl pseudo instructions such as nacljmp - this is not needed though - use a normal ret and the assembler will do the right thing
+- Conversion of indirect jumps via a register - these should be masked and replaced. This is not yet supported
+- 64 bit NaCl support - i.e. the load and store base + offset pattern
+- Detecting the use of any NaCl blacklisted instructions
+
+To ensure that your compiled code does not use any features from the "Not yet supported" section, run the NaCl verifier after you build your binary with NASM
+	ncval_new lib_yourlib.so
+
+For the most any code that compiles without the '-nacl' flag should compile without any changes when you give the '-nacl' flag. 
+However, keep in mind, 
+- Jump targets may now become out of reach causing a compiler error. For example a 'jump short' instruction target may no longer be within range and so this would cause an error when nasm is invoked on your code
+
+
+-----------------------------------------------------------------
+              NASM, the Netwide Assembler.
+
+Many many developers all over the net respect NASM for what it is
+- a widespread (thus netwide), portable (thus netwide!), very
+flexible and mature assembler tool with support for many output
+formats (thus netwide!!).
+
+Now we have good news for you: NASM is licensed under the "simplified"
+(2-clause) BSD license.  This means its development is open to even
+wider society of programmers wishing to improve their lovely
+assembler.
+
+The NASM project is now situated at SourceForge.net, the most
+popular Open Source development site on the Internet.
+
+Visit our website at http://nasm.sourceforge.net/ and our
+SourceForge project at http://sourceforge.net/projects/nasm/
+
+See the file CHANGES for the description of changes between revisions,
+and the file AUTHORS for a list of contributors.
+
+                                                   With best regards,
+                                                           NASM crew.

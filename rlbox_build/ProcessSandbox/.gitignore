@@ -1,0 +1,12 @@
+*~
+.syntastic_cpp_config
+*.swp
+*.o
+*.a
+*.so
+ProcessSandbox_otherside_*
+main32
+main64
+/dyn_ldr_test_api
+/dyn_ldr_benchmark
+/.vscode/

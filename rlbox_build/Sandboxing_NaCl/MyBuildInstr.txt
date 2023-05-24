@@ -1,0 +1,158 @@
+
+Run the following
+
+	sudo apt install flex bison git
+
+	git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+	export PATH="$(pwd)/depot_tools:$PATH"
+
+	git clone https://chromium.googlesource.com/external/gyp.git
+	cd gyp
+	sudo python setup.py install
+
+	cd..
+	mkdir nacl
+	cd nacl
+	fetch nacl
+
+	gclient runhooks
+
+	cd native_client/tools
+	make sync
+	cd ../..
+
+
+Comment lines 
+/*extern inline int
+floor_log2 (unsigned HOST_WIDE_INT x)
+{
+  return x ? HOST_BITS_PER_WIDE_INT - 1 - (int) CLZ_HWI (x) : -1;
+}
+
+extern inline int
+exact_log2 (unsigned HOST_WIDE_INT x)
+{
+  return x == (x & -x) && x ? (int) CTZ_HWI (x) : -1;
+}*/
+
+in ./nacl/native_client/tools/SRC/gcc/gcc/toplev.h
+
+
+
+
+Run the following
+
+	cd native_client/tools
+	make clean build-with-newlib -j8
+	cd ..
+	./scons
+	sudo ./tools/linux.x86_64.prep.sh
+
+	sudo apt-get install git cmake texinfo flex bison ccache g++ g++-multilib gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
+	test -e /usr/include/asm || sudo ln -s /usr/include/asm-generic /usr/include/asm
+
+	pnacl/build.sh sdk
+	../tools/clang/scripts/update.py
+	toolchain_build/toolchain_build_pnacl.py --verbose --sync --clobber --install toolchain/linux_x86/pnacl_newlib_raw
+
+	rm -rf toolchain/linux_x86/pnacl_newlib
+	ln -s pnacl_newlib_raw toolchain/linux_x86/pnacl_newlib
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
+Alternate manual instructions
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+sudo apt install flex bison git
+
+git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+export PATH=/home/shr/Code/depot_tools:"$PATH"
+
+git clone https://chromium.googlesource.com/external/gyp.git
+From the gyp folder
+sudo python setup.py install
+
+git clone https://chromium.googlesource.com/chromium/src/build 
+into nacl/build
+
+git clone https://chromium.googlesource.com/chromium/src/third_party/binutils
+nacl/third_party/binutils
+
+git clone https://chromium.googlesource.com/chromium/src/tools/clang
+nacl/tools/clang
+
+git clone https://chromium.googlesource.com/chromium/buildtools
+nacl/buildtools
+
+git clone https://chromium.googlesource.com/native_client/src/native_client
+into nacl/native_client
+Check out chromium/2661
+
+In nacl folder
+gclient config https://chromium.googlesource.com/native_client/src/native_client.git
+gclient runhooks
+
+cd native_client/tools
+make sync
+
+Download https://ftp.gnu.org/gnu/gmp/gmp-5.0.2.tar.gz to thirdparty/gmp/gmp-5.0.2.tar.gz
+Download http://www.mpfr.org/mpfr-3.0.1/mpfr-3.0.1.tar.gz thirdparty/mpfr/mpfr-3.0.1.tar.gz
+Download https://downloads.sourceforge.net/project/scons/scons-local/2.5.1/scons-local-2.5.1.zip and extract it
+Copy scons-local-2.5.1/scons-local-2.5.1/SCons folder to native_client/SCons
+
+Comment lines 
+/*extern inline int
+floor_log2 (unsigned HOST_WIDE_INT x)
+{
+  return x ? HOST_BITS_PER_WIDE_INT - 1 - (int) CLZ_HWI (x) : -1;
+}
+
+extern inline int
+exact_log2 (unsigned HOST_WIDE_INT x)
+{
+  return x == (x & -x) && x ? (int) CTZ_HWI (x) : -1;
+}*/
+
+in /home/shr/Code/nacl/native_client/tools/SRC/gcc/gcc/toplev.h
+
+Edit /home/shr/Code/nacl/native_client/site_scons/site_init.py
+
+Find calls to _load_site_scons_dir and wrap the first arg in str like below
+
+SCons.Script.Main._load_site_scons_dir(
+    str(SCons.Node.FS.get_default_fs().SConstruct_dir), site_dir)
+
+
+make clean build-with-newlib -j8
+
+
+git clone https://chromium.googlesource.com/chromium/testing/gtest 
+into nacl/testing/gtest
+
+git clone https://chromium.googlesource.com/linux-syscall-support
+into nacl/third_party/lss
+
+git clone https://chromium.googlesource.com/breakpad/breakpad
+into nacl/breakpad
+
+in dir native_client
+./scons
+
+sudo ./tools/linux.x86_64.prep.sh
+
+sudo apt-get install git cmake texinfo flex bison ccache g++ g++-multilib gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
+test -e /usr/include/asm || sudo ln -s /usr/include/asm-generic /usr/include/asm
+pnacl/build.sh sdk
+
+../tools/clang/scripts/update.py
+
+toolchain_build/toolchain_build_pnacl.py --verbose --sync --clobber --install toolchain/linux_x86/pnacl_newlib_raw
+
+rm -rf toolchain/linux_x86/pnacl_newlib
+ln -s pnacl_newlib_raw toolchain/linux_x86/pnacl_newlib
+
+# syncs the sources and builds the developer toolchain
+# Add the --build-sbtc flag to also build the sandboxed translator

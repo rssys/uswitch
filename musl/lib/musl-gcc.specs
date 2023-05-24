@@ -1,0 +1,32 @@
+%rename cpp_options old_cpp_options
+
+*cpp_options:
+-nostdinc -isystem /home/ubuntu/development/uswitch/musl/include -isystem include%s %(old_cpp_options)
+
+*cc1:
+%(cc1_cpu) -nostdinc -isystem /home/ubuntu/development/uswitch/musl/include -isystem include%s
+
+*link_libgcc:
+-L/home/ubuntu/development/uswitch/musl/lib -L .%s
+
+*libgcc:
+libgcc.a%s %:if-exists(libgcc_eh.a%s)
+
+*startfile:
+%{!shared: /home/ubuntu/development/uswitch/musl/lib/Scrt1.o} /home/ubuntu/development/uswitch/musl/lib/crti.o crtbeginS.o%s
+
+*endfile:
+crtendS.o%s /home/ubuntu/development/uswitch/musl/lib/crtn.o
+
+*link:
+-nostdlib %{shared:-shared} %{static:-static} %{rdynamic:-export-dynamic}
+
+*esp_link:
+
+
+*esp_options:
+
+
+*esp_cpp_options:
+
+

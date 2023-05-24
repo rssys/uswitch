@@ -1,0 +1,32 @@
+# Copyright 2016 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# This file is based on Chromium's version in //build_overrides/gtest.gni
+# with the changes outlined below.
+
+# Exclude support for registering main function in multi-process tests.
+#
+# This value differs from Chromium's version as we do not currently use
+# multi-process tests in Native Client and this support requires additional
+# source files from Chromium codebase.
+gtest_include_multiprocess = false
+
+# Exclude support for platform-specific operations across unit tests.
+#
+# This value differs from Chromium's version as we do not currently support
+# platform-specific operations in Native Client and this support requires
+# additional source files from Chromium codebase.
+gtest_include_platform_test = false
+
+# Exclude support for testing Objective C code on OS X and iOS.
+#
+# This value differs from Chromium's version as we do not have any Objective C
+# code in our codebase and we do not need such support.
+gtest_include_objc_support = false
+
+# Exclude support for flushing coverage files on iOS.
+#
+# This value differs from Chromium's as do not have any iOS specific code in
+# our codebase and we do not need such support.
+gtest_include_ios_coverage = false
