@@ -49,10 +49,12 @@ sudo make install
 
 # Build dependencies
 ```shell
-sudo apt install build-essential yasm nasm cmake
+sudo apt install build-essential yasm nasm cmake libseccomp-dev clang
 ./build_musl.sh
 ./build_wasm.sh
 ./build_rlbox.sh
+cd libuswitch && make -j`nproc` && cd ..
+cd rlbox_uswitch && make -j`nproc` && cd ..
 ```
 
 # Build libraries
