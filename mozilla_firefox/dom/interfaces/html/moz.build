@@ -1,0 +1,42 @@
+# -*- Mode: python; indent-tabs-mode: nil; tab-width: 40 -*-
+# vim: set filetype=python:
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this
+# file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+with Files("**"):
+    BUG_COMPONENT = ("Core", "DOM")
+
+XPIDL_SOURCES += [
+    'nsIDOMHTMLAnchorElement.idl',
+    'nsIDOMHTMLAreaElement.idl',
+    'nsIDOMHTMLBaseElement.idl',
+    'nsIDOMHTMLButtonElement.idl',
+    'nsIDOMHTMLCanvasElement.idl',
+    'nsIDOMHTMLCollection.idl',
+    'nsIDOMHTMLDocument.idl',
+    'nsIDOMHTMLElement.idl',
+    'nsIDOMHTMLFormElement.idl',
+    'nsIDOMHTMLFrameElement.idl',
+    'nsIDOMHTMLHtmlElement.idl',
+    'nsIDOMHTMLIFrameElement.idl',
+    'nsIDOMHTMLImageElement.idl',
+    'nsIDOMHTMLInputElement.idl',
+    'nsIDOMHTMLLinkElement.idl',
+    'nsIDOMHTMLMediaElement.idl',
+    'nsIDOMHTMLMenuItemElement.idl',
+    'nsIDOMHTMLObjectElement.idl',
+    'nsIDOMHTMLOptionElement.idl',
+    'nsIDOMHTMLOptionsCollection.idl',
+    'nsIDOMHTMLScriptElement.idl',
+    'nsIDOMHTMLSelectElement.idl',
+    'nsIDOMHTMLSourceElement.idl',
+    'nsIDOMHTMLTextAreaElement.idl',
+    'nsIDOMMozBrowserFrame.idl',
+    'nsIDOMTimeRanges.idl',
+    'nsIDOMValidityState.idl',
+    'nsIMozBrowserFrame.idl',
+]
+
+XPIDL_MODULE = 'dom_html'
+

@@ -1,0 +1,476 @@
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+body {
+    font-family: sans-serif;
+    line-height:1;
+}
+
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+    display:block;
+}
+
+nav ul {
+    list-style:none;
+}
+
+blockquote, q {
+    quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content:'';
+    content:none;
+}
+
+a {
+    margin:0;
+    padding:0;
+    font-size:100%;
+    vertical-align:baseline;
+    background:transparent;
+}
+
+/* change colours to suit your needs */
+ins {
+    background-color:#ff9;
+    color:#000;
+    text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+    background-color:#ff9;
+    color:#000;
+    font-style:italic;
+    font-weight:bold;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+    border-bottom:1px dotted;
+    cursor:help;
+}
+
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+/* change border colour to suit your needs */
+hr {
+    display:block;
+    height:1px;
+    border:0;
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+    vertical-align:middle;
+}
+
+
+/*------- Calling FT hosted Comcast Fonts --------*/
+/*/ XfinityBrownWeb-Bold /*/
+@font-face {
+  font-family: 'XfinityBrownWeb-Bold';
+  src: url('https://cdn.flashtalking.com/93411/fonts/57cfca5154c2481062a796915c0bdab3ed0f6fd6.eot'); /* IE9 Compat Modes */
+  src: url('https://cdn.flashtalking.com/93411/fonts/d4b3e162de98cb3f43636cde35fcc00e89f83fdf.woff2') format('woff2'),
+   url('https://cdn.flashtalking.com/93411/fonts/1ccbf188da2dd4565c47b990c13da23365f1251e.woff') format('woff'); /* Legacy iOS */
+}
+
+/* XfinityBrownWeb-BoldItalic */
+
+@font-face {
+  font-family: 'XfinityBrownWeb-BoldItalic';
+  src: url('https://cdn.flashtalking.com/93411/fonts/dd78931fcea87798824b2ea15508b3018ea83801.eot'); /* IE9 Compat Modes */
+  src: url('https://cdn.flashtalking.com/93411/fonts/925713410a76312ac03b99b396ff01617ccd51b4.woff2') format('woff2'),
+   url('https://cdn.flashtalking.com/93411/fonts/a241002feb1cb850183df40e8eac072407f86886.woff') format('woff'); /* Legacy iOS */
+}
+
+/* XfinityBrownWeb-Italic */
+
+@font-face {
+  font-family: 'XfinityBrownWeb-Italic';
+  src: url('https://cdn.flashtalking.com/93411/fonts/8dce5ea02e414e29aae67005b9005d4b3c93540a.eot'); /* IE9 Compat Modes */
+  src: url('https://cdn.flashtalking.com/93411/fonts/11618f303fbc6ea15251b1dea07a01a172457cf4.woff2') format('woff2'),
+   url('https://cdn.flashtalking.com/93411/fonts/a8f706bffdb0cd829c1cf7648e9bf9a1b214603f.woff') format('woff'); /* Legacy iOS */
+}
+
+/* XfinityBrownWeb-Light */
+
+@font-face {
+  font-family: 'XfinityBrownWeb-Light';
+  src: url('https://cdn.flashtalking.com/93411/fonts/0cd2571b390e50c7237ba186315923424f49f8ad.eot'); /* IE9 Compat Modes */
+  src: url('https://cdn.flashtalking.com/93411/fonts/24941008179701317ed1b84ece7f42ed6a90c2d4.woff2') format('woff2'),
+   url('https://cdn.flashtalking.com/93411/fonts/74e41835de34c8deb73e1f979e66fe374ac4ccb9.woff') format('woff'); /* Legacy iOS */
+}
+
+/* ---------------------------------- Font Style Classses ---------------------------------- */
+
+.xsb { font-family : 'XfinityBrownWeb-Bold'; font-style: normal;}
+
+.xsbi { font-family : 'XfinityBrownWeb-Bold'; font-style: italic;}
+
+.xsl { font-family : 'XfinityBrownWeb-Light'; font-style:normal;}
+
+.xsi { font-family : 'XfinityBrownWeb-Italic'; font-style: normal;}
+
+.styleItalic {font-style: italic;}
+
+
+/* ---------------------------------- Styles ---------------------------------- */
+
+html {
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+div, img, ft-dynamic {
+   position : absolute;
+}
+
+#frame1BackgroundImage, #frame3DeviceContent1, #frame3DeviceContent2{
+    background-size: 100% 100%;
+}
+
+#container {
+    width: 726px;
+    height: 88px;
+    overflow: hidden;
+    cursor: pointer;
+    background: white;
+    color: white;
+    border: 1px solid #808080;
+}
+
+
+/* ---------------------------------- NON DYNAMIC ELEMENTS ---------------------------------- */
+
+#logo {
+    top:10px;
+    right:15px;
+    width: 87px;
+    height: 30px;
+}
+
+
+
+#card{
+    position: absolute;
+    top:10px;
+    left: 355px;
+    width: 116px;
+    height: 73px;
+    border-radius: 8px;
+    background-color: #242424;
+    color: white;
+}
+
+#cardBG{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    width: 116px;
+    height: 73px;
+    border-radius: 8px;
+    background-image: url(cardBG.jpg);
+    background-size: 100% 100%;
+}
+
+#line_BoltOn{
+    width: 2px;
+    height: 74px;
+    top: 8px;
+    left: 329px; 
+    background-color: #3399cc;
+}
+
+#bottomBar {
+    width: 170%;
+    height: 100%;
+    top: 0px;
+    left: 576px;
+    transform: skew(-34deg, 0deg);
+     background-color: #ebeef0;
+}
+
+
+#frameBg{
+    position: absolute;
+    top:0px;
+    left:0px;
+    width: 728px;
+    height: 90px; 
+    background-image: url(frameBG.jpg);
+    background-size: 100% 100%;
+}
+
+
+/* ---------------------------------- DYNAMIC ELEMENTS ---------------------------------- */
+#F1HeadlineHolder{
+    top: 0px;
+    left: 0px;
+    width: 600px;
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+#F1Headline{
+    position: relative;
+    text-align: center;
+    line-height: 1.1;
+    letter-spacing: -.6px;
+    font-size: 34px;
+}
+
+
+#F2HeadlineHolder{
+    top: 4px;
+    left: 35px;
+    width: 300px;
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    color: black;
+}
+
+
+
+#F2Headline{
+    position: relative;
+    text-align: left;
+    line-height: 1.25;
+    letter-spacing: -.6px;
+    font-size: 22px;
+}
+
+
+
+/* ---------------------------------- END FRAME DYNAMIC ELEMENTS ---------------------------------- */
+#endFrame {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: black;
+}
+
+#endFrameHeadlineHolder {
+    top: 0px;
+    left: 10px;
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#endFrameHeadline{
+    position: relative;
+    text-align: left;
+    line-height: 1.1;
+    letter-spacing: -0.7px;
+    font-size: 18px;
+    width: 200px;
+}
+
+#endFrameofferBoltOnHolder {
+    top: 0px;
+    left: 210px;
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+
+}
+
+#offerBoltOn {
+    position: relative;
+    text-align: center;
+    line-height: 1.1;
+    letter-spacing: -.2px;
+    font-size: 19px;
+}
+
+#endFrameofferTermsHolder{
+    top: 9px;
+    left: 475px;
+    height: 25px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 120px;
+
+}
+
+#offerTerms {
+    position: relative;
+    text-align: left;
+    line-height: 1.1;
+    letter-spacing: -.2px;
+    font-size: 9px;
+}
+
+#priceCard{
+    position: absolute;
+    width: 100px;
+    height: 32px;
+    bottom:0px;
+    right:6px;
+    font-size: 34px;
+    text-align: right;
+    letter-spacing: -1.5px;
+}
+
+.supCard {
+    top: -13px;
+    font-size: 45%;
+    position: relative;
+    vertical-align: baseline;
+    margin-right: 4px;
+}
+
+#phoneNumber {
+    position: absolute;
+    bottom: 28px;
+    right: 15px;
+    font-size: 13px;
+    color: black;
+    letter-spacing: -.5px;
+}
+
+#ctaBg {
+    bottom: 30px;
+    right: 138px;
+    width: 86px;
+    height: 26px;
+    overflow: hidden;
+    background-color: #3399cc;
+    border-radius: 45px;
+    background-repeat: no-repeat;
+    background-image: linear-gradient(to right, rgba(204, 204, 204, 0), rgba(255, 255, 255, 0.3), rgba(204, 204, 204, 0));
+    background-position: -100px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: .5
+}
+
+#cta {
+    position: relative;
+    text-align: center;
+    font-size: 12px;
+    line-height: 11px;
+    width: 100%;
+    color: white;
+    white-space: nowrap;
+    padding: 1px 0 0 1px;
+}
+
+#legalDisclaimer{
+    width: 180px;
+    text-align: right;
+    right: 15px;
+    bottom:6px;
+    position: absolute;
+    letter-spacing: -.4px;
+    color: #666666;
+    font-size: 9px;
+    line-height: 10px;
+}
+
+#staticImage img {
+    position: absolute;
+    width: 728px;
+    height: 90px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid #808080;
+}
+
+/*------------------ JS Switching Classes ------------------- */
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: inline-block;
+}
+
+.offerAgrmt--small {
+    font-size: 9px;
+    line-height: 1.2;
+}
+
+.offerBoltOn--small {
+    font-size: 9px;
+    line-height: 1.2;
+}
+
+.offerTitle--small {
+    margin-bottom: 0px;
+}
+
+.offerPrice--small {
+    font-size: 42px;
+}
+
+.offerCents--small {
+    font-size: 17px;
+    top: 3px;
+}
+
+.sup--small {
+    top: -20px;
+}
+
+.offerTerms--small {
+    top: 17px;
+}

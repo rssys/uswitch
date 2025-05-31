@@ -1,0 +1,311 @@
+/* vim:set ts=2 sw=2 sts=2 et: */
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+.theme-dark,
+.theme-light {
+  --number-color: var(--theme-highlight-green);
+  --string-color: var(--theme-highlight-red);
+  --null-color: var(--theme-comment);
+  --object-color: var(--theme-highlight-blue);
+  --caption-color: var(--theme-highlight-blue);
+  --location-color: var(--theme-comment);
+  --source-link-color: var(--theme-highlight-blue);
+  --node-color: var(--theme-highlight-purple);
+  --reference-color: var(--theme-highlight-blue);
+  --comment-node-color: var(--theme-comment);
+}
+
+.theme-firebug {
+  --number-color: #000088;
+  --string-color: #FF0000;
+  --null-color: #787878;
+  --object-color: DarkGreen;
+  --caption-color: #444444;
+  --location-color: #555555;
+  --source-link-color: blue;
+  --node-color: rgb(0, 0, 136);
+  --reference-color: rgb(102, 102, 255);
+}
+
+/******************************************************************************/
+
+.inline {
+  display: inline;
+  white-space: normal;
+}
+
+.objectBox-object {
+  font-weight: bold;
+  color: var(--object-color);
+  white-space: pre-wrap;
+}
+
+.objectBox-string,
+.objectBox-symbol,
+.objectBox-text,
+.objectBox-textNode,
+.objectBox-table {
+  white-space: pre-wrap;
+}
+
+.objectBox-number,
+.objectBox-styleRule,
+.objectBox-element,
+.objectBox-textNode,
+.objectBox-array > .length {
+  color: var(--number-color);
+}
+
+.objectBox-textNode,
+.objectBox-string,
+.objectBox-symbol {
+  color: var(--string-color);
+}
+
+.objectBox-string a, .objectBox-string a:visited {
+  color: currentColor;
+}
+
+.objectBox-function,
+.objectBox-stackTrace,
+.objectBox-profile {
+  color: var(--object-color);
+}
+
+.objectBox-Location,
+.location {
+  color: var(--location-color);
+}
+
+.objectBox-null,
+.objectBox-undefined,
+.objectBox-hint,
+.objectBox-nan,
+.logRowHint {
+  color: var(--null-color);
+}
+
+.objectBox-sourceLink {
+  position: absolute;
+  right: 4px;
+  top: 2px;
+  padding-left: 8px;
+  font-weight: bold;
+  color: var(--source-link-color);
+}
+
+.objectBox-failure {
+  color: var(--string-color);
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 2px;
+  font-size: 0.8em;
+  padding: 0 2px;
+}
+
+/******************************************************************************/
+
+.objectBox-event,
+.objectBox-eventLog,
+.objectBox-regexp,
+.objectBox-object {
+  color: var(--object-color);
+  white-space: pre-wrap;
+}
+
+.objectBox .Date {
+  color: var(--string-color);
+  white-space: pre-wrap;
+}
+
+/******************************************************************************/
+
+.objectBox.theme-comment {
+  color: var(--comment-node-color);
+}
+
+.tag-name {
+  color: var(--object-color);
+}
+
+.attrName {
+  color: var(--string-color);
+}
+
+.attrEqual,
+.objectEqual {
+  color: var(--comment-node-color);
+}
+
+.attrValue,
+.attrValue.objectBox-string {
+  color: var(--node-color);
+}
+
+.angleBracket {
+  color: var(--theme-body-color);
+}
+
+/******************************************************************************/
+
+.objectLeftBrace,
+.objectRightBrace,
+.arrayLeftBracket,
+.arrayRightBracket {
+  color: var(--object-color);
+}
+
+/******************************************************************************/
+/* Cycle reference*/
+
+.objectBox-Reference {
+  font-weight: bold;
+  color: var(--reference-color);
+}
+
+[class*="objectBox"] > .objectTitle {
+  color: var(--object-color);
+}
+
+.caption {
+  color: var(--caption-color);
+}
+
+/******************************************************************************/
+/* Themes */
+
+.theme-dark .objectBox-null,
+.theme-dark .objectBox-undefined,
+.theme-light .objectBox-null,
+.theme-light .objectBox-undefined {
+  font-style: normal;
+}
+
+.theme-dark .objectBox-object,
+.theme-light .objectBox-object {
+  font-weight: normal;
+  white-space: pre-wrap;
+}
+
+.theme-dark .caption,
+.theme-light .caption {
+  font-weight: normal;
+}
+
+/******************************************************************************/
+/* Open DOMNode in inspector button */
+
+.open-inspector svg {
+  fill: var(--comment-node-color);
+  height: 16px;
+  width: 16px;
+  margin-left: .25em;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.objectBox-node:hover .open-inspector svg,
+.objectBox-textNode:hover .open-inspector svg,
+.open-inspector svg:hover {
+  fill: var(--theme-highlight-blue);
+}
+
+/******************************************************************************/
+/* "more…" ellipsis */
+.more-ellipsis {
+  color: var(--comment-node-color);
+}
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+.tree {
+  --arrow-width: 10px;
+  --arrow-single-margin: 5px;
+  --arrow-total-width: calc(var(--arrow-width) + var(--arrow-single-margin));
+  --arrow-fill-color: var(--theme-splitter-color, #9B9B9B);
+  --tree-indent-width: 1em;
+  --tree-indent-border-color: #A2D1FF;
+  --tree-indent-border-width: 1px;
+  --tree-node-hover-background-color: #F0F9FE;
+  --tree-node-focus-color: white;
+  --tree-node-focus-background-color: var(--theme-selection-background, #0a84ff);
+  overflow: auto;
+}
+
+.tree.inline {
+  display: inline-block;
+}
+
+.tree.nowrap {
+  white-space: nowrap;
+}
+
+.tree.noselect {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.tree button {
+  display: block;
+}
+
+.tree .tree-node[data-expandable="true"] {
+  cursor: pointer;
+}
+
+.tree .tree-node:not(.focused):hover {
+  background-color: var(--tree-node-hover-background-color);
+}
+
+.tree .tree-node.focused {
+  color: var(--tree-node-focus-color);
+  background-color: var(--tree-node-focus-background-color);
+  --arrow-fill-color: currentColor;
+}
+
+.arrow svg {
+  fill: var(--arrow-fill-color);
+  transition: transform 0.125s ease;
+  width: var(--arrow-width);
+  margin-inline-end: var(--arrow-single-margin);
+  transform: rotate(-90deg);
+}
+
+html[dir="rtl"] .arrow svg,
+.arrow svg:dir(rtl),
+.arrow svg:-moz-locale-dir(rtl) {
+  transform: rotate(90deg);
+}
+
+.arrow.expanded.expanded svg {
+  transform: rotate(0deg);
+}
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+.tree.object-inspector .object-label,
+.tree.object-inspector .object-label * {
+  color: var(--theme-highlight-blue);
+}
+
+.tree.object-inspector .node .unavailable {
+  color: var(--theme-comment);
+}
+
+.tree.object-inspector .lessen,
+.tree.object-inspector .lessen *,
+.tree.object-inspector .lessen .object-label,
+.tree.object-inspector .lessen .object-label * {
+  color: var(--theme-comment);
+}
+
+.object-inspector .object-delimiter {
+  color: var(--theme-comment);
+}

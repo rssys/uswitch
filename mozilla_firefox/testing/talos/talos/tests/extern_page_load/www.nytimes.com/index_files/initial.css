@@ -1,0 +1,211 @@
+@font-face {
+    font-family: "Monday-Regular";
+    src: url("Monday-Regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "FoundersGrotesk-Medium";
+    src: url("FoundersGrotesk-Medium.woff2") format("woff2");
+}
+
+/*************** MAIN ELEMENTS ***************/
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    position: absolute;
+}
+
+#wrapper {
+    display: block;
+    top: 0;
+    left: 0;
+    width: 970px;
+    height: 250px;
+    overflow: hidden;
+    background-color: #F2F2DA;
+}
+
+#wrect {
+    width: inherit;
+    height: inherit;
+    background: #F2F2DA;
+    pointer-events: none;
+}
+
+#border {
+    border: 1px solid #B7B5A5;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: inherit;
+    height: inherit;
+    pointer-events: none;
+}
+
+#bgexit {
+    width: inherit;
+    height: inherit;
+    cursor: pointer;
+}
+
+/******************** LOGO ********************/
+
+#logo {
+    cursor: pointer;
+    width: 250px;
+    height: 110px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.2);
+    -webkit-transform: translate(-50%, -50%) scale(1.2);
+    -moz-transform: translate(-50%, -50%) scale(1.2);
+    -ms-transform: translate(-50%, -50%) scale(1.2);
+    -o-transform: translate(-50%, -50%) scale(1.2);
+}
+
+/******************** BUTTON ********************/
+
+#cta {
+    width: 165px;
+    height: 34px;
+    line-height: 32px;
+    letter-spacing: 0.9pt;
+    bottom: 20px;
+    left: 617px;
+    cursor: pointer;
+    background: #c9a825;
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'FoundersGrotesk-Medium', sans-serif;
+    font-size: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-transition: background 0.3s, color 0.3s;
+    transition: background 0.3s, color 0.3s;
+    -webkit-transition-timing-function: ease-in-out;
+    transition-timing-function: ease-in-out;
+}
+
+#cta:hover {
+    background-color: #6d3f25;
+    color: #fff;
+}
+
+/********************** TEXT **********************/
+
+#textWrap {
+    width: 380px;
+    height: 117px;
+    right: 81px;
+    bottom: 58px;
+}
+
+.textDiv {
+    width: inherit;
+    height: inherit;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.textSpan > span {
+    display: inline-block;
+}
+
+.headline {
+    color: #775C3D;
+    font-size: 24px;
+    font-family: 'Monday-Regular', serif;
+    font-style: normal;
+    line-height: 115%;
+}
+
+.subheadline {
+    color: #6d3f25;
+    font-size: 16px;
+    line-height: 115%;
+    font-family: 'FoundersGrotesk-Medium', serif;
+    letter-spacing: 0.3pt;
+    padding-top: 4px;
+    width: 350px;
+}
+
+/********************** IMAGE **********************/
+
+#imagesWrap {
+    width: 430px;
+    height: inherit;
+    top: 0;
+    left: 0;
+}
+
+.imageDiv {
+    width: inherit;
+    height: inherit;
+}
+
+#flowers {
+    width: inherit;
+    height: inherit;
+}
+
+#plantWrap1 {
+    width: 300px;
+    height: 260px;
+    top: 40px;
+    right: -158px;
+    transform: rotate(2deg);
+    -webkit-transform: rotate(2deg);
+    -moz-transform: rotate(2deg);
+    -ms-transform: rotate(2deg);
+    -o-transform: rotate(2deg);
+}
+
+#plantWrap2 {
+    width: 270px;
+    height: 330px;
+    bottom: -278px;
+    right: 314px;
+    transform: rotate(20deg);
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+}
+
+#flowerWrap1 {
+    width: 65px;
+    height: 65px;
+    bottom: 204px;
+    right: 80px;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+}
+
+#flowerWrap2 {
+    width: 120px;
+    height: 120px;
+    bottom: -37px;
+    right: -43px;
+    -webkit-transform: rotate(220deg);
+    transform: rotate(220deg);
+    -moz-transform: rotate(220deg);
+    -ms-transform: rotate(220deg);
+    -o-transform: rotate(220deg);
+}

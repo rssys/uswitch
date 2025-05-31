@@ -1,0 +1,1072 @@
+# Manifest entries for imported test suites whose individual test cases
+# we don't want to change.
+
+skip script ecma_6/String/normalize-generateddata-input.js # input data for other test
+
+# Skip intl402 tests when Intl isn't available.
+skip-if(!this.hasOwnProperty('Intl')) include test262/intl402/jstests.list
+
+# Skip Intl.PluralRules tests when the addIntlExtras helper isn't available.
+skip-if(!this.hasOwnProperty('addIntlExtras')) include test262/intl402/PluralRules/jstests.list
+
+# Skip built-ins/Simd tests when SIMD isn't available.
+skip-if(!this.hasOwnProperty('SIMD')) include test262/built-ins/Simd/jstests.list
+
+# Skip built-in/Atomics when Atomics isn't available
+skip-if(!this.hasOwnProperty('Atomics')) include test262/built-ins/Atomics/jstests.list
+
+# Skip built-in/SharedArrayBuffer
+skip-if(!this.hasOwnProperty('SharedArrayBuffer')) include test262/built-ins/SharedArrayBuffer/jstests.list
+
+# Times out on arm and cgc builds.
+slow script test262/built-ins/decodeURI/S15.1.3.1_A2.5_T1.js
+slow script test262/built-ins/decodeURIComponent/S15.1.3.2_A2.5_T1.js
+
+
+#################################################################
+# Tests disabled due to intentional alternative implementations #
+#################################################################
+
+# Legacy "caller" and "arguments" implemented as accessor properties on Function.prototype.
+skip script test262/built-ins/Function/prototype/restricted-property-arguments.js
+skip script test262/built-ins/Function/prototype/restricted-property-caller.js
+skip script test262/built-ins/ThrowTypeError/unique-per-realm-function-proto.js
+
+
+#########################################################################
+# Test262 tests disabled when features are only conditionally available #
+#########################################################################
+
+skip-if(!Array.prototype.values) script test262/built-ins/Array/prototype/Symbol.iterator.js
+skip-if(!Array.prototype.values) include test262/built-ins/Array/prototype/values/jstests.list
+skip-if(!String.prototype.normalize) include test262/built-ins/String/prototype/normalize/jstests.list
+
+# Requires ICU to detect Final_Sigma case mapping context
+skip-if(!this.hasOwnProperty("Intl")) script test262/built-ins/String/prototype/toLowerCase/Final_Sigma_U180E.js
+skip-if(!this.hasOwnProperty("Intl")) script test262/built-ins/String/prototype/toLowerCase/special_casing_conditional.js
+skip-if(!this.hasOwnProperty("Intl")) script test262/built-ins/String/prototype/toLocaleLowerCase/Final_Sigma_U180E.js
+skip-if(!this.hasOwnProperty("Intl")) script test262/built-ins/String/prototype/toLocaleLowerCase/special_casing_conditional.js
+
+
+#####################################
+# Test262 tests disabled on browser #
+#####################################
+
+# Defines a non-configurable property on the WindowProxy object.
+skip-if(!xulRuntime.shell) script test262/annexB/language/eval-code/direct/global-block-decl-eval-global-existing-global-update.js
+skip-if(!xulRuntime.shell) script test262/annexB/language/eval-code/direct/global-if-decl-else-decl-a-eval-global-existing-global-update.js
+skip-if(!xulRuntime.shell) script test262/annexB/language/eval-code/direct/global-if-decl-else-decl-b-eval-global-existing-global-update.js
+skip-if(!xulRuntime.shell) script test262/annexB/language/eval-code/direct/global-if-decl-else-stmt-eval-global-existing-global-update.js
+skip-if(!xulRuntime.shell) script test262/annexB/language/eval-code/direct/global-if-decl-no-else-eval-global-existing-global-update.js
+skip-if(!xulRuntime.shell) script test262/annexB/language/eval-code/direct/global-if-stmt-else-decl-eval-global-existing-global-update.js
+skip-if(!xulRuntime.shell) script test262/annexB/language/eval-code/direct/global-switch-case-eval-global-existing-global-update.js
+skip-if(!xulRuntime.shell) script test262/annexB/language/eval-code/direct/global-switch-dflt-eval-global-existing-global-update.js
+skip-if(!xulRuntime.shell) script test262/annexB/language/eval-code/indirect/global-block-decl-eval-global-existing-global-update.js
+skip-if(!xulRuntime.shell) script test262/annexB/language/eval-code/indirect/global-if-decl-else-decl-a-eval-global-existing-global-update.js
+skip-if(!xulRuntime.shell) script test262/annexB/language/eval-code/indirect/global-if-decl-else-decl-b-eval-global-existing-global-update.js
+skip-if(!xulRuntime.shell) script test262/annexB/language/eval-code/indirect/global-if-decl-else-stmt-eval-global-existing-global-update.js
+skip-if(!xulRuntime.shell) script test262/annexB/language/eval-code/indirect/global-if-decl-no-else-eval-global-existing-global-update.js
+skip-if(!xulRuntime.shell) script test262/annexB/language/eval-code/indirect/global-if-stmt-else-decl-eval-global-existing-global-update.js
+skip-if(!xulRuntime.shell) script test262/annexB/language/eval-code/indirect/global-switch-case-eval-global-existing-global-update.js
+skip-if(!xulRuntime.shell) script test262/annexB/language/eval-code/indirect/global-switch-dflt-eval-global-existing-global-update.js
+skip-if(!xulRuntime.shell) script test262/language/eval-code/direct/var-env-func-init-global-update-non-configurable.js
+skip-if(!xulRuntime.shell) script test262/language/eval-code/indirect/var-env-func-init-global-update-non-configurable.js
+skip-if(!xulRuntime.shell) script test262/language/global-code/script-decl-lex-restricted-global.js
+skip-if(!xulRuntime.shell) script test262/language/global-code/script-decl-var.js
+skip-if(!xulRuntime.shell) script test262/language/global-code/script-decl-func-err-non-configurable.js
+skip-if(!xulRuntime.shell) script test262/language/global-code/script-decl-func.js
+
+# Calls preventExtensions() on the WindowProxy object.
+skip-if(!xulRuntime.shell) script test262/language/global-code/script-decl-func-err-non-extensible.js
+skip-if(!xulRuntime.shell) script test262/language/global-code/script-decl-lex.js
+skip-if(!xulRuntime.shell) script test262/language/global-code/script-decl-var-err.js
+
+# Defines a restricted property on the WindowProxy object.
+skip-if(!xulRuntime.shell) script test262/built-ins/Object/defineProperty/15.2.3.6-4-354-13.js
+skip-if(!xulRuntime.shell) script test262/built-ins/Object/defineProperty/15.2.3.6-4-360-7.js
+skip-if(!xulRuntime.shell) script test262/built-ins/Object/defineProperty/15.2.3.6-4-531-13.js
+skip-if(!xulRuntime.shell) script test262/built-ins/Object/defineProperty/15.2.3.6-4-531-17.js
+skip-if(!xulRuntime.shell) script test262/built-ins/Object/defineProperty/15.2.3.6-4-538-7.js
+
+# Fails because window has a "name" property on WindowProxy.
+skip-if(!xulRuntime.shell) script test262/language/expressions/object/method-definition/generator-name-prop-symbol.js
+skip-if(!xulRuntime.shell) script test262/language/expressions/object/method-definition/name-name-prop-symbol.js
+
+
+##################################################
+# Test262 tests skipped due to SpiderMonkey bugs #
+##################################################
+
+# %ThrowTypeError% should be anonymous
+skip script test262/built-ins/ThrowTypeError/name.js
+
+# Anonymous functions have own name property in SpiderMonkey
+skip script test262/language/expressions/assignment/fn-name-lhs-cover.js
+skip script test262/language/expressions/assignment/fn-name-lhs-member.js
+skip script test262/language/expressions/function/name.js
+skip script test262/language/expressions/generators/name.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1317422
+skip script test262/built-ins/global/property-descriptor.js
+skip script test262/built-ins/global/global-object.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1079853
+skip script test262/built-ins/TypedArray/prototype/every/callbackfn-detachbuffer.js
+skip script test262/built-ins/TypedArray/prototype/filter/callbackfn-detachbuffer.js
+skip script test262/built-ins/TypedArray/prototype/find/predicate-may-detach-buffer.js
+skip script test262/built-ins/TypedArray/prototype/findIndex/predicate-may-detach-buffer.js
+skip script test262/built-ins/TypedArray/prototype/forEach/callbackfn-detachbuffer.js
+skip script test262/built-ins/TypedArray/prototype/map/callbackfn-detachbuffer.js
+skip script test262/built-ins/TypedArray/prototype/reduceRight/callbackfn-detachbuffer.js
+skip script test262/built-ins/TypedArray/prototype/reduce/callbackfn-detachbuffer.js
+skip script test262/built-ins/TypedArray/prototype/some/callbackfn-detachbuffer.js
+skip script test262/built-ins/TypedArrays/internals/DefineOwnProperty/detached-buffer-realm.js
+skip script test262/built-ins/TypedArrays/internals/DefineOwnProperty/detached-buffer.js
+skip script test262/built-ins/TypedArrays/internals/Get/detached-buffer-realm.js
+skip script test262/built-ins/TypedArrays/internals/Get/detached-buffer.js
+skip script test262/built-ins/TypedArrays/internals/GetOwnProperty/detached-buffer-realm.js
+skip script test262/built-ins/TypedArrays/internals/GetOwnProperty/detached-buffer.js
+skip script test262/built-ins/TypedArrays/internals/HasProperty/detached-buffer-realm.js
+skip script test262/built-ins/TypedArrays/internals/HasProperty/detached-buffer.js
+skip script test262/built-ins/TypedArrays/internals/Set/detached-buffer-realm.js
+skip script test262/built-ins/TypedArrays/internals/Set/detached-buffer.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1129202
+skip script test262/built-ins/TypedArrays/internals/DefineOwnProperty/key-is-greater-than-last-index.js
+skip script test262/built-ins/TypedArrays/internals/DefineOwnProperty/key-is-lower-than-zero.js
+skip script test262/built-ins/TypedArrays/internals/DefineOwnProperty/key-is-minus-zero.js
+skip script test262/built-ins/TypedArrays/internals/DefineOwnProperty/key-is-not-canonical-index.js
+skip script test262/built-ins/TypedArrays/internals/DefineOwnProperty/key-is-not-integer.js
+skip script test262/built-ins/TypedArrays/internals/Get/key-is-not-canonical-index.js
+skip script test262/built-ins/TypedArrays/internals/Get/key-is-not-integer.js
+skip script test262/built-ins/TypedArrays/internals/GetOwnProperty/key-is-not-canonical-index.js
+skip script test262/built-ins/TypedArrays/internals/HasProperty/key-is-not-canonical-index.js
+skip script test262/built-ins/TypedArrays/internals/HasProperty/key-is-not-integer.js
+skip script test262/built-ins/TypedArrays/internals/Set/key-is-minus-zero.js
+skip script test262/built-ins/TypedArrays/internals/Set/key-is-not-canonical-index.js
+skip script test262/built-ins/TypedArrays/internals/Set/key-is-not-integer.js
+skip script test262/built-ins/TypedArrays/internals/Set/key-is-out-of-bounds.js
+skip script test262/built-ins/TypedArrays/internals/Set/tonumber-value-throws.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1140152
+skip script test262/built-ins/TypedArray/prototype/slice/bit-precision.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1317405
+skip script test262/language/computed-property-names/class/static/method-number.js
+skip script test262/language/computed-property-names/class/static/method-string.js
+skip script test262/language/computed-property-names/class/static/method-symbol.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1286997
+# Bug 1286997 probably doesn't cover all spec violations.
+skip script test262/language/expressions/assignment/S11.13.1_A5_T5.js
+skip script test262/language/expressions/assignment/S11.13.1_A7_T1.js
+skip script test262/language/expressions/assignment/S11.13.1_A7_T2.js
+skip script test262/language/expressions/assignment/S11.13.1_A7_T3.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A5.10_T5.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A5.11_T5.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A5.1_T5.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A5.2_T5.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A5.3_T5.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A5.4_T5.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A5.5_T5.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A5.6_T5.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A5.7_T5.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A5.8_T5.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A5.9_T5.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A7.10_T1.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A7.10_T2.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A7.11_T1.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A7.11_T2.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A7.1_T1.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A7.1_T2.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A7.2_T1.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A7.2_T2.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A7.3_T1.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A7.3_T2.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A7.4_T1.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A7.4_T2.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A7.5_T1.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A7.5_T2.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A7.6_T1.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A7.6_T2.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A7.7_T1.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A7.7_T2.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A7.8_T1.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A7.8_T2.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A7.9_T1.js
+skip script test262/language/expressions/compound-assignment/S11.13.2_A7.9_T2.js
+skip script test262/language/expressions/postfix-decrement/S11.3.2_A5_T5.js
+skip script test262/language/expressions/postfix-decrement/S11.3.2_A6_T1.js
+skip script test262/language/expressions/postfix-decrement/S11.3.2_A6_T2.js
+skip script test262/language/expressions/postfix-increment/S11.3.1_A5_T5.js
+skip script test262/language/expressions/postfix-increment/S11.3.1_A6_T1.js
+skip script test262/language/expressions/postfix-increment/S11.3.1_A6_T2.js
+skip script test262/language/expressions/prefix-decrement/S11.4.5_A5_T5.js
+skip script test262/language/expressions/prefix-decrement/S11.4.5_A6_T1.js
+skip script test262/language/expressions/prefix-decrement/S11.4.5_A6_T2.js
+skip script test262/language/expressions/prefix-increment/S11.4.4_A5_T5.js
+skip script test262/language/expressions/prefix-increment/S11.4.4_A6_T1.js
+skip script test262/language/expressions/prefix-increment/S11.4.4_A6_T2.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1288457
+skip script test262/built-ins/Function/internals/Construct/base-ctor-revoked-proxy.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1296236
+skip script test262/built-ins/Proxy/revocable/revocation-function-name.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1296235
+skip script test262/built-ins/Promise/all/resolve-element-function-name.js
+skip script test262/built-ins/Promise/executor-function-name.js
+skip script test262/built-ins/Promise/reject-function-name.js
+skip script test262/built-ins/Promise/resolve-function-name.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=944846
+skip script test262/built-ins/Number/prototype/toExponential/return-values.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1288457
+skip script test262/built-ins/Function/internals/Construct/base-ctor-revoked-proxy-realm.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1225839
+skip script test262/built-ins/Function/internals/Call/class-ctor-realm.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1297179
+skip script test262/built-ins/Proxy/apply/arguments-realm.js
+skip script test262/built-ins/Proxy/apply/trap-is-not-callable-realm.js
+skip script test262/built-ins/Proxy/construct/arguments-realm.js
+skip script test262/built-ins/Proxy/construct/trap-is-not-callable-realm.js
+skip script test262/built-ins/Proxy/construct/trap-is-undefined-proto-from-ctor-realm.js
+skip script test262/built-ins/Proxy/defineProperty/desc-realm.js
+skip script test262/built-ins/Proxy/defineProperty/null-handler-realm.js
+skip script test262/built-ins/Proxy/defineProperty/targetdesc-configurable-desc-not-configurable-realm.js
+skip script test262/built-ins/Proxy/defineProperty/targetdesc-not-compatible-descriptor-not-configurable-target-realm.js
+skip script test262/built-ins/Proxy/defineProperty/targetdesc-not-compatible-descriptor-realm.js
+skip script test262/built-ins/Proxy/defineProperty/targetdesc-undefined-not-configurable-descriptor-realm.js
+skip script test262/built-ins/Proxy/defineProperty/targetdesc-undefined-target-is-not-extensible-realm.js
+skip script test262/built-ins/Proxy/defineProperty/trap-is-not-callable-realm.js
+skip script test262/built-ins/Proxy/deleteProperty/trap-is-not-callable-realm.js
+skip script test262/built-ins/Proxy/get/trap-is-not-callable-realm.js
+skip script test262/built-ins/Proxy/getOwnPropertyDescriptor/result-type-is-not-object-nor-undefined-realm.js
+skip script test262/built-ins/Proxy/getOwnPropertyDescriptor/trap-is-not-callable-realm.js
+skip script test262/built-ins/Proxy/getPrototypeOf/trap-is-not-callable-realm.js
+skip script test262/built-ins/Proxy/has/trap-is-not-callable-realm.js
+skip script test262/built-ins/Proxy/isExtensible/trap-is-not-callable-realm.js
+skip script test262/built-ins/Proxy/ownKeys/return-not-list-object-throws-realm.js
+skip script test262/built-ins/Proxy/ownKeys/trap-is-not-callable-realm.js
+skip script test262/built-ins/Proxy/preventExtensions/trap-is-not-callable-realm.js
+skip script test262/built-ins/Proxy/set/trap-is-not-callable-realm.js
+skip script test262/built-ins/Proxy/setPrototypeOf/trap-is-not-callable-realm.js
+
+# Erros thrown from wrong realm, similar to 1225839, 1288457, and 1297179.
+skip script test262/language/expressions/new/non-ctor-err-realm.js
+skip script test262/built-ins/Array/length/define-own-prop-length-overflow-realm.js
+skip script test262/built-ins/Function/internals/Construct/derived-return-val-realm.js
+skip script test262/built-ins/Function/internals/Construct/derived-this-uninitialized-realm.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1317416
+skip script test262/language/expressions/super/realm.js
+skip script test262/built-ins/Array/proto-from-ctor-realm.js
+skip script test262/built-ins/ArrayBuffer/proto-from-ctor-realm.js
+skip script test262/built-ins/Boolean/proto-from-ctor-realm.js
+skip script test262/built-ins/DataView/proto-from-ctor-realm.js
+skip script test262/built-ins/Date/proto-from-ctor-realm-one.js
+skip script test262/built-ins/Date/proto-from-ctor-realm-two.js
+skip script test262/built-ins/Date/proto-from-ctor-realm-zero.js
+skip script test262/built-ins/Error/proto-from-ctor-realm.js
+skip script test262/built-ins/Function/prototype/bind/proto-from-ctor-realm.js
+skip script test262/built-ins/Function/proto-from-ctor-realm.js
+skip script test262/built-ins/GeneratorFunction/proto-from-ctor-realm.js
+skip script test262/built-ins/Map/proto-from-ctor-realm.js
+skip script test262/built-ins/Number/proto-from-ctor-realm.js
+skip script test262/built-ins/Object/proto-from-ctor.js
+skip script test262/built-ins/Promise/proto-from-ctor-realm.js
+skip script test262/built-ins/RegExp/proto-from-ctor-realm.js
+skip script test262/built-ins/Set/proto-from-ctor-realm.js
+skip script test262/built-ins/String/proto-from-ctor-realm.js
+skip script test262/built-ins/TypedArrays/buffer-arg-proto-from-ctor-realm.js
+skip script test262/built-ins/TypedArrays/length-arg-proto-from-ctor-realm.js
+skip script test262/built-ins/TypedArrays/no-args-proto-from-ctor-realm.js
+skip script test262/built-ins/TypedArrays/object-arg-proto-from-ctor-realm.js
+skip script test262/built-ins/TypedArrays/typedarray-arg-other-ctor-buffer-ctor-custom-species-proto-from-ctor-realm.js
+skip script test262/built-ins/TypedArrays/typedarray-arg-proto-from-ctor-realm.js
+skip script test262/built-ins/TypedArrays/typedarray-arg-same-ctor-buffer-ctor-species-custom-proto-from-ctor-realm.js
+skip script test262/built-ins/WeakMap/proto-from-ctor-realm.js
+skip script test262/built-ins/WeakSet/proto-from-ctor-realm.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1317395
+skip script test262/built-ins/ArrayBuffer/prototype/byteLength/detached-buffer.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1317394
+skip-if(release_or_beta) script test262/built-ins/DataView/prototype/byteOffset/detached-buffer.js
+skip-if(release_or_beta) script test262/built-ins/DataView/prototype/byteLength/detached-buffer.js
+
+# We're still waiting for a final decision on https://github.com/tc39/ecma402/pull/84.
+skip script test262/intl402/Collator/10.1.1_1.js
+skip script test262/intl402/NumberFormat/11.1.1_1.js
+skip script test262/intl402/DateTimeFormat/12.1.1_1.js
+
+# Waiting on https://github.com/tc39/ecma402/issues/122
+skip script test262/intl402/DateTimeFormat/prototype/12.3_a.js
+skip script test262/intl402/Collator/prototype/10.3_a.js
+skip script test262/intl402/NumberFormat/prototype/11.3_a.js
+skip script test262/intl402/PluralRules/prototype/prototype.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1317378
+skip script test262/language/statements/do-while/cptn-abrupt-empty.js
+skip script test262/language/statements/do-while/cptn-normal.js
+skip script test262/language/statements/for-in/cptn-decl-abrupt-empty.js
+skip script test262/language/statements/for-in/cptn-decl-itr.js
+skip script test262/language/statements/for-in/cptn-decl-skip-itr.js
+skip script test262/language/statements/for-in/cptn-decl-zero-itr.js
+skip script test262/language/statements/for-in/cptn-expr-abrupt-empty.js
+skip script test262/language/statements/for-in/cptn-expr-itr.js
+skip script test262/language/statements/for-in/cptn-expr-skip-itr.js
+skip script test262/language/statements/for-in/cptn-expr-zero-itr.js
+skip script test262/language/statements/for/cptn-decl-expr-iter.js
+skip script test262/language/statements/for/cptn-decl-expr-no-iter.js
+skip script test262/language/statements/for/cptn-expr-expr-iter.js
+skip script test262/language/statements/for/cptn-expr-expr-no-iter.js
+skip script test262/language/statements/for/S12.6.3_A9.1.js
+skip script test262/language/statements/for/S12.6.3_A9.js
+skip script test262/language/statements/for-of/cptn-decl-abrupt-empty.js
+skip script test262/language/statements/for-of/cptn-decl-itr.js
+skip script test262/language/statements/for-of/cptn-decl-no-itr.js
+skip script test262/language/statements/for-of/cptn-expr-abrupt-empty.js
+skip script test262/language/statements/for-of/cptn-expr-itr.js
+skip script test262/language/statements/for-of/cptn-expr-no-itr.js
+skip script test262/language/statements/if/cptn-else-false-nrml.js
+skip script test262/language/statements/if/cptn-else-false-abrupt-empty.js
+skip script test262/language/statements/if/cptn-else-true-abrupt-empty.js
+skip script test262/language/statements/if/cptn-else-true-nrml.js
+skip script test262/language/statements/if/cptn-no-else-false.js
+skip script test262/language/statements/if/cptn-no-else-true-abrupt-empty.js
+skip script test262/language/statements/if/cptn-no-else-true-nrml.js
+skip script test262/language/statements/switch/cptn-a-abrupt-empty.js
+skip script test262/language/statements/switch/cptn-abrupt-empty.js
+skip script test262/language/statements/switch/cptn-b-abrupt-empty.js
+skip script test262/language/statements/switch/cptn-b-final.js
+skip script test262/language/statements/switch/cptn-dflt-abrupt-empty.js
+skip script test262/language/statements/switch/cptn-dflt-b-abrupt-empty.js
+skip script test262/language/statements/switch/cptn-dflt-b-final.js
+skip script test262/language/statements/switch/cptn-dflt-final.js
+skip script test262/language/statements/switch/cptn-no-dflt-match-abrupt-empty.js
+skip script test262/language/statements/switch/cptn-no-dflt-match-final.js
+skip script test262/language/statements/switch/cptn-no-dflt-no-match.js
+skip script test262/language/statements/try/cptn-finally-skip-catch.js
+skip script test262/language/statements/try/cptn-finally-wo-catch.js
+skip script test262/language/statements/try/cptn-try.js
+skip script test262/language/statements/while/cptn-abrupt-empty.js
+skip script test262/language/statements/while/cptn-iter.js
+skip script test262/language/statements/while/cptn-no-iter.js
+skip script test262/language/statements/with/cptn-abrupt-empty.js
+skip script test262/language/statements/with/cptn-nrml.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1289882
+skip script test262/intl402/NumberFormat/prototype/formatToParts/formatToParts.js
+skip script test262/intl402/NumberFormat/prototype/formatToParts/length.js
+skip script test262/intl402/NumberFormat/prototype/formatToParts/main.js
+skip script test262/intl402/NumberFormat/prototype/formatToParts/name.js
+skip script test262/intl402/NumberFormat/prototype/formatToParts/return-abrupt-tonumber.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1296234
+skip script test262/intl402/Collator/prototype/compare/compare-function-name.js
+skip script test262/intl402/DateTimeFormat/prototype/format/format-function-name.js
+skip script test262/intl402/NumberFormat/prototype/format/format-function-name.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1317373
+skip script test262/annexB/language/eval-code/direct/global-if-stmt-else-decl-eval-global-existing-global-init.js
+skip script test262/annexB/language/eval-code/direct/global-switch-dflt-eval-global-existing-global-init.js
+skip script test262/annexB/language/eval-code/direct/global-if-decl-no-else-eval-global-existing-global-init.js
+skip script test262/annexB/language/eval-code/direct/global-if-decl-else-stmt-eval-global-existing-global-init.js
+skip script test262/annexB/language/eval-code/direct/global-if-decl-else-decl-b-eval-global-existing-global-init.js
+skip script test262/annexB/language/eval-code/direct/global-if-decl-else-decl-a-eval-global-existing-global-init.js
+skip script test262/annexB/language/eval-code/direct/global-block-decl-eval-global-existing-global-init.js
+skip script test262/annexB/language/eval-code/direct/global-switch-case-eval-global-existing-global-init.js
+skip script test262/annexB/language/eval-code/indirect/global-if-stmt-else-decl-eval-global-existing-global-init.js
+skip script test262/annexB/language/eval-code/indirect/global-switch-dflt-eval-global-existing-global-init.js
+skip script test262/annexB/language/eval-code/indirect/global-if-decl-no-else-eval-global-existing-global-init.js
+skip script test262/annexB/language/eval-code/indirect/global-if-decl-else-stmt-eval-global-existing-global-init.js
+skip script test262/annexB/language/eval-code/indirect/global-if-decl-else-decl-b-eval-global-existing-global-init.js
+skip script test262/annexB/language/eval-code/indirect/global-if-decl-else-decl-a-eval-global-existing-global-init.js
+skip script test262/annexB/language/eval-code/indirect/global-block-decl-eval-global-existing-global-init.js
+skip script test262/annexB/language/eval-code/indirect/global-switch-case-eval-global-existing-global-init.js
+
+# SIMD.
+skip script test262/built-ins/Simd/check.js
+skip script test262/built-ins/Simd/from.js
+skip script test262/built-ins/Simd/operators.js
+skip script test262/built-ins/Simd/replace_lane.js
+skip script test262/built-ins/Simd/shuffle.js
+skip script test262/built-ins/Simd/swizzle.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1336991
+skip script test262/built-ins/Simd/float_operators.js
+skip script test262/built-ins/Simd/all_true.js
+skip script test262/built-ins/Simd/any_true.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1340147
+skip script test262/language/module-code/eval-export-dflt-cls-anon.js
+skip script test262/language/module-code/eval-export-dflt-expr-cls-anon.js
+skip script test262/language/module-code/eval-export-dflt-expr-fn-anon.js
+skip script test262/language/module-code/eval-export-dflt-expr-gen-anon.js
+skip script test262/language/module-code/instn-named-bndng-dflt-fun-anon.js
+skip script test262/language/module-code/instn-named-bndng-dflt-gen-anon.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1340307
+skip script test262/language/module-code/instn-resolve-empty-export.js
+skip script test262/language/module-code/instn-resolve-empty-import.js
+skip script test262/language/module-code/instn-resolve-err-reference.js
+skip script test262/language/module-code/instn-resolve-order-depth.js
+skip script test262/language/module-code/instn-resolve-order-src.js
+skip script test262/language/module-code/parse-err-reference.js
+skip script test262/language/expressions/postfix-increment/target-cover-yieldexpr.js
+skip script test262/language/expressions/postfix-increment/target-newtarget.js
+skip script test262/language/expressions/postfix-increment/target-cover-newtarget.js
+skip script test262/language/expressions/postfix-increment/non-simple.js
+skip script test262/language/expressions/postfix-decrement/target-cover-yieldexpr.js
+skip script test262/language/expressions/postfix-decrement/target-newtarget.js
+skip script test262/language/expressions/postfix-decrement/target-cover-newtarget.js
+skip script test262/language/expressions/postfix-decrement/non-simple.js
+skip script test262/language/expressions/prefix-increment/target-cover-yieldexpr.js
+skip script test262/language/expressions/prefix-increment/target-newtarget.js
+skip script test262/language/expressions/prefix-increment/target-cover-newtarget.js
+skip script test262/language/expressions/prefix-increment/non-simple.js
+skip script test262/language/expressions/prefix-decrement/target-cover-yieldexpr.js
+skip script test262/language/expressions/prefix-decrement/target-newtarget.js
+skip script test262/language/expressions/prefix-decrement/target-cover-newtarget.js
+skip script test262/language/expressions/prefix-decrement/non-simple.js
+skip script test262/language/asi/S7.9_A5.7_T1.js
+
+# Dependent on evalInWorker, setSharedArrayBuffer, and
+# getSharedArrayBuffer, plus the test cases can't actually run in the
+# browser even if that were fixed, https://bugzil.la/1349863
+skip-if(!xulRuntime.shell) script test262/built-ins/Atomics/wait/negative-timeout.js
+skip-if(!xulRuntime.shell) script test262/built-ins/Atomics/wait/was-woken.js
+skip-if(!xulRuntime.shell) script test262/built-ins/Atomics/wait/did-timeout.js
+skip-if(!xulRuntime.shell) script test262/built-ins/Atomics/wait/good-views.js
+skip-if(!xulRuntime.shell) script test262/built-ins/Atomics/wait/no-spurious-wakeup.js
+skip-if(!xulRuntime.shell) script test262/built-ins/Atomics/wait/nan-timeout.js
+skip-if(!xulRuntime.shell) script test262/built-ins/Atomics/wake/wake-all.js
+skip-if(!xulRuntime.shell) script test262/built-ins/Atomics/wake/wake-zero.js
+skip-if(!xulRuntime.shell) script test262/built-ins/Atomics/wake/wake-negative.js
+skip-if(!xulRuntime.shell) script test262/built-ins/Atomics/wake/wake-nan.js
+skip-if(!xulRuntime.shell) script test262/built-ins/Atomics/wake/wake-two.js
+skip-if(!xulRuntime.shell) script test262/built-ins/Atomics/wake/wake-in-order.js
+skip-if(!xulRuntime.shell) script test262/built-ins/Atomics/wake/wake-one.js
+skip-if(!xulRuntime.shell) script test262/built-ins/Atomics/wake/wake-all-on-loc.js
+
+# SharedArrayBuffer API pedantry
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1346071
+skip script test262/built-ins/TypedArrays/buffer-arg-proto-from-ctor-realm-sab.js
+skip script test262/built-ins/SharedArrayBuffer/proto-from-ctor-realm.js
+skip script test262/built-ins/DataView/proto-from-ctor-realm-sab.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1346081
+skip script test262/intl402/NumberFormat/prototype/format/11.3.2_TRP.js
+skip script test262/intl402/NumberFormat/prototype/format/11.3.2_TRF.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1346080
+skip script test262/intl402/PluralRules/prototype/select/tainting.js
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1340304
+skip-if(!xulRuntime.shell) script test262/language/module-code/instn-iee-err-circular.js
+skip-if(!xulRuntime.shell) script test262/language/module-code/instn-iee-err-circular-as.js
+
+# RegExp s (dotAll) flag
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1361856
+skip script test262/annexB/built-ins/RegExp/prototype/flags/order-after-compile.js
+skip include test262/built-ins/RegExp/dotall/jstests.list
+skip include test262/built-ins/RegExp/prototype/dotAll/jstests.list
+skip script test262/built-ins/RegExp/prototype/flags/order.js
+skip script test262/built-ins/RegExp/prototype/flags/s.js
+
+# Hoisted block-level function named "arguments" not initialized with undefined per B.3.3.1
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1339123
+skip script test262/annexB/language/function-code/block-decl-func-skip-arguments.js
+
+# RegExp Unicode Property Escapes
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1361876
+skip include test262/built-ins/RegExp/property-escapes/jstests.list
+
+# RegExp lookBehind
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1225665
+skip include test262/built-ins/RegExp/lookBehind/jstests.list
+
+# RegExp named groups
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1362154
+skip include test262/built-ins/RegExp/named-groups/jstests.list
+
+# Stash rval in AsyncIteratorClose
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1364608
+skip script test262/language/statements/for-await-of/async-func-dstr-const-ary-ptrn-elision-step-err.js
+skip script test262/language/statements/for-await-of/async-func-dstr-const-ary-ptrn-rest-id-iter-step-err.js
+skip script test262/language/statements/for-await-of/async-func-dstr-let-ary-ptrn-elision-step-err.js
+skip script test262/language/statements/for-await-of/async-func-dstr-let-ary-ptrn-rest-id-iter-step-err.js
+skip script test262/language/statements/for-await-of/async-func-dstr-var-ary-ptrn-elision-step-err.js
+skip script test262/language/statements/for-await-of/async-func-dstr-var-ary-ptrn-rest-id-iter-step-err.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-const-ary-ptrn-elision-step-err.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-const-ary-ptrn-rest-id-iter-step-err.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-let-ary-ptrn-elision-step-err.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-let-ary-ptrn-rest-id-iter-step-err.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-var-ary-ptrn-elision-step-err.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-var-ary-ptrn-rest-id-iter-step-err.js
+
+# Missing expression statement restriction for "async function"
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1361143
+skip script test262/language/statements/for/decl-async-fun.js
+skip script test262/language/statements/for/decl-async-gen.js
+skip script test262/language/statements/for-in/decl-async-fun.js
+skip script test262/language/statements/for-in/decl-async-gen.js
+skip script test262/language/statements/for-of/decl-async-fun.js
+skip script test262/language/statements/for-of/decl-async-gen.js
+skip script test262/language/statements/labeled/decl-async-function.js
+skip script test262/language/statements/labeled/decl-async-generator.js
+skip script test262/language/statements/while/decl-async-fun.js
+skip script test262/language/statements/while/decl-async-gen.js
+skip script test262/language/statements/with/decl-async-fun.js
+skip script test262/language/statements/with/decl-async-gen.js
+
+####################################################
+# Tests disabled due to invalid test expectations  #
+####################################################
+
+# https://github.com/tc39/test262/pull/1072
+skip script test262/language/statements/for-await-of/async-gen-dstr-let-async-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/for-await-of/async-func-dstr-var-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/for-await-of/async-func-dstr-var-async-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/for-await-of/async-func-dstr-var-async-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/for-await-of/async-func-dstr-let-async-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/for-await-of/async-func-dstr-const-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/for-await-of/async-func-dstr-const-async-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-let-async-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/for-await-of/async-func-dstr-let-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-var-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-var-async-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-const-async-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/for-await-of/async-func-dstr-let-async-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-var-async-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/for-await-of/async-func-dstr-const-async-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/for-await-of/async-func-dstr-let-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/for-await-of/async-func-dstr-let-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-let-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-const-async-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/for-await-of/async-func-dstr-var-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-let-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-const-async-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-var-async-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-var-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-const-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-const-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-let-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/for-await-of/async-func-dstr-var-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-const-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/for-await-of/async-func-dstr-const-async-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/for-await-of/async-func-dstr-const-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/for-await-of/async-func-dstr-let-async-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/for-await-of/async-func-dstr-const-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/for-await-of/async-func-dstr-var-async-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-let-async-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/for-await-of/async-gen-dstr-var-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/generators/dstr-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/generators/dstr-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/generators/dstr-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/generators/dstr-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/generators/dstr-dflt-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/generators/dstr-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/let/dstr-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/let/dstr-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/let/dstr-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/const/dstr-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/const/dstr-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/const/dstr-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/async-generator/dstr-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/async-generator/dstr-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/async-generator/dstr-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/async-generator/dstr-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/async-generator/dstr-dflt-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/async-generator/dstr-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/variable/dstr-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/variable/dstr-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/variable/dstr-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/try/dstr-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/try/dstr-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/try/dstr-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/function/dstr-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/function/dstr-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/function/dstr-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/function/dstr-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/function/dstr-dflt-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/function/dstr-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/for/dstr-let-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/for/dstr-let-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/for/dstr-const-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/for/dstr-var-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/for/dstr-var-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/for/dstr-const-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/for/dstr-const-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/for/dstr-let-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/for/dstr-var-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/for-of/dstr-let-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/for-of/dstr-obj-rest-nested-obj-nested-rest.js
+skip script test262/language/statements/for-of/dstr-let-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/for-of/dstr-const-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/for-of/dstr-var-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/for-of/dstr-var-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/for-of/dstr-obj-rest-nested-obj.js
+skip script test262/language/statements/for-of/dstr-obj-rest-obj-own-property.js
+skip script test262/language/statements/for-of/dstr-const-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/for-of/dstr-const-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/for-of/dstr-let-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/for-of/dstr-var-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/class/dstr-async-gen-meth-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/class/dstr-gen-meth-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/class/dstr-gen-meth-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/class/dstr-async-gen-meth-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/class/dstr-meth-static-dflt-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/class/dstr-gen-meth-dflt-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/class/dstr-meth-static-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/class/dstr-meth-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/class/dstr-meth-static-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/class/dstr-meth-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/class/dstr-async-gen-meth-static-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/class/dstr-meth-dflt-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/class/dstr-async-gen-meth-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/class/dstr-meth-static-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/class/dstr-async-gen-meth-static-dflt-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/class/dstr-gen-meth-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/class/dstr-meth-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/class/dstr-gen-meth-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/class/dstr-meth-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/class/dstr-async-gen-meth-static-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/class/dstr-gen-meth-static-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/class/dstr-gen-meth-static-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/class/dstr-meth-static-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/class/dstr-gen-meth-static-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/class/dstr-async-gen-meth-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/class/dstr-async-gen-meth-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/class/dstr-async-gen-meth-dflt-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/class/dstr-gen-meth-static-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/class/dstr-meth-obj-ptrn-rest-nested-obj.js
+skip script test262/language/statements/class/dstr-async-gen-meth-static-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/class/dstr-async-gen-meth-static-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/class/dstr-gen-meth-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/class/dstr-meth-static-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/statements/class/dstr-gen-meth-static-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/class/dstr-async-gen-meth-static-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/statements/class/dstr-gen-meth-static-dflt-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/generators/dstr-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/generators/dstr-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/generators/dstr-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/generators/dstr-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/generators/dstr-dflt-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/generators/dstr-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/async-generator/dstr-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/async-generator/dstr-named-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/async-generator/dstr-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/async-generator/dstr-named-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/async-generator/dstr-named-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/async-generator/dstr-named-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/async-generator/dstr-named-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/async-generator/dstr-named-dflt-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/async-generator/dstr-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/async-generator/dstr-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/async-generator/dstr-dflt-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/async-generator/dstr-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/assignment/dstr-obj-rest-nested-obj-nested-rest.js
+skip script test262/language/expressions/assignment/dstr-obj-rest-nested-obj.js
+skip script test262/language/expressions/assignment/dstr-obj-rest-obj-own-property.js
+skip script test262/language/expressions/function/dstr-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/function/dstr-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/function/dstr-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/function/dstr-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/function/dstr-dflt-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/function/dstr-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/object/dstr-async-gen-meth-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/object/dstr-gen-meth-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/object/dstr-gen-meth-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/object/dstr-async-gen-meth-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/object/dstr-gen-meth-dflt-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/object/dstr-meth-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/object/dstr-meth-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/object/dstr-meth-dflt-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/object/dstr-async-gen-meth-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/object/dstr-gen-meth-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/object/dstr-meth-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/object/dstr-gen-meth-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/object/dstr-meth-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/object/dstr-async-gen-meth-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/object/dstr-async-gen-meth-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/object/dstr-async-gen-meth-dflt-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/object/dstr-meth-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/object/dstr-gen-meth-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/arrow-function/dstr-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/arrow-function/dstr-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/arrow-function/dstr-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/arrow-function/dstr-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/arrow-function/dstr-dflt-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/arrow-function/dstr-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/class/dstr-async-gen-meth-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/class/dstr-gen-meth-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/class/dstr-gen-meth-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/class/dstr-async-gen-meth-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/class/dstr-meth-static-dflt-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/class/dstr-gen-meth-dflt-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/class/dstr-meth-static-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/class/dstr-meth-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/class/dstr-meth-static-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/class/dstr-meth-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/class/dstr-async-gen-meth-static-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/class/dstr-meth-dflt-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/class/dstr-async-gen-meth-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/class/dstr-meth-static-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/class/dstr-async-gen-meth-static-dflt-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/class/dstr-gen-meth-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/class/dstr-meth-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/class/dstr-gen-meth-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/class/dstr-meth-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/class/dstr-async-gen-meth-static-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/class/dstr-gen-meth-static-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/class/dstr-gen-meth-static-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/class/dstr-meth-static-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/class/dstr-gen-meth-static-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/class/dstr-async-gen-meth-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/class/dstr-async-gen-meth-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/class/dstr-async-gen-meth-dflt-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/class/dstr-gen-meth-static-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/class/dstr-meth-obj-ptrn-rest-nested-obj.js
+skip script test262/language/expressions/class/dstr-async-gen-meth-static-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/class/dstr-async-gen-meth-static-dflt-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/class/dstr-gen-meth-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/class/dstr-meth-static-obj-ptrn-rest-obj-own-property.js
+skip script test262/language/expressions/class/dstr-gen-meth-static-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/class/dstr-async-gen-meth-static-dflt-obj-ptrn-rest-obj-nested-rest.js
+skip script test262/language/expressions/class/dstr-gen-meth-static-dflt-obj-ptrn-rest-nested-obj.js
+
+# https://github.com/tc39/test262/pull/1170
+skip script test262/language/module-code/namespace/internals/define-own-property.js
+skip script test262/language/module-code/namespace/internals/set.js
+
+# Not updated in https://github.com/tc39/test262/commit/a775c243bc36a9a4b5656824ef210c01dc6afffd
+skip script test262/built-ins/Object/getOwnPropertyDescriptors/duplicate-keys.js
+
+#############################################
+# Tests disabled when properties are absent #
+#############################################
+
+# https://bugzilla.mozilla.org/show_bug.cgi?id=1415303
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/toindex-bytelength-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/return-abrupt-tonumber-bytelength-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/byteoffset-is-negative-throws-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/negative-byteoffset-throws-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/return-instance-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/defined-byteoffset-undefined-bytelength-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/buffer-does-not-have-arraybuffer-data-throws-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/proto-from-ctor-realm-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/return-abrupt-tonumber-byteoffset-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/newtarget-undefined-throws-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/negative-bytelength-throws-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/excessive-bytelength-throws-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/prototype/byteOffset/this-has-no-dataview-internal-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/prototype/byteOffset/return-byteoffset-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/prototype/buffer/this-has-no-dataview-internal-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/prototype/buffer/return-buffer-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/prototype/byteLength/return-bytelength-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/prototype/byteLength/this-has-no-dataview-internal-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/prototype/getInt32/negative-byteoffset-throws-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/prototype/getInt32/this-has-no-dataview-internal-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/prototype/getInt32/return-value-clean-arraybuffer-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/prototype/getInt32/index-is-out-of-range-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/prototype/getInt32/return-values-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/prototype/getInt32/return-values-custom-offset-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/prototype/getInt32/to-boolean-littleendian-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/prototype/getInt32/return-abrupt-from-tonumber-byteoffset-symbol-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/prototype/getInt32/toindex-byteoffset-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/prototype/getInt32/return-abrupt-from-tonumber-byteoffset-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/return-abrupt-tonumber-byteoffset-symbol-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/defined-bytelength-and-byteoffset-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/custom-proto-if-not-object-fallbacks-to-default-prototype-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/excessive-byteoffset-throws-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/custom-proto-if-object-is-used-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/return-abrupt-tonumber-bytelength-symbol-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/toindex-byteoffset-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/instance-extensibility-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/defined-byteoffset-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/custom-proto-access-throws-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/DataView/buffer-reference-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArray/prototype/set/typedarray-arg-set-values-diff-buffer-other-type-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArray/prototype/set/typedarray-arg-set-values-diff-buffer-other-type-conversions-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArray/prototype/set/typedarray-arg-set-values-same-buffer-same-type-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArray/prototype/set/typedarray-arg-set-values-diff-buffer-same-type-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/init-zero.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype-from-newtarget.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/undefined-newtarget-throws.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/negative-length-throws.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/zero-length.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/allocation-limit.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/length-is-absent.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/toindex-length.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/length-is-too-large-throws.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/Symbol.toStringTag.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/constructor.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/byteLength/length.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/byteLength/this-is-arraybuffer.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/byteLength/return-bytelength.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/byteLength/this-has-no-typedarrayname-internal.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/byteLength/invoked-as-func.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/byteLength/this-is-not-object.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/byteLength/prop-desc.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/byteLength/invoked-as-accessor.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/byteLength/name.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/species-is-null.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/context-is-not-arraybuffer-object.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/descriptor.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/tointeger-conversion-end.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/length.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/start-exceeds-end.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/species-returns-same-arraybuffer.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/negative-end.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/this-is-arraybuffer.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/species-is-not-constructor.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/start-default-if-undefined.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/context-is-not-object.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/extensible.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/start-exceeds-length.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/species-constructor-is-undefined.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/tointeger-conversion-start.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/species-returns-smaller-arraybuffer.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/species-constructor-is-not-object.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/end-default-if-undefined.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/number-conversion.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/negative-start.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/nonconstructor.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/species-returns-not-arraybuffer.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/end-exceeds-length.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/start-default-if-absent.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/species.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/end-default-if-absent.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/species-returns-larger-arraybuffer.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/species-is-not-object.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/species-is-undefined.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/prototype/slice/name.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/return-abrupt-from-length.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/return-abrupt-from-length-symbol.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/data-allocation-after-object-creation.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/proto-from-ctor-realm.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/SharedArrayBuffer/newtarget-prototype-is-not-object.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/ArrayBuffer/prototype/byteLength/this-is-sharedarraybuffer.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/ArrayBuffer/prototype/slice/this-is-sharedarraybuffer.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/exchange/shell.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/exchange/good-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/exchange/bad-range.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/exchange/shared-nonint-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/exchange/non-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/load/shell.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/load/good-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/load/bad-range.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/load/shared-nonint-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/load/non-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/compareExchange/shell.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/compareExchange/good-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/compareExchange/bad-range.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/compareExchange/shared-nonint-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/compareExchange/non-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/sub/shell.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/sub/good-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/sub/bad-range.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/sub/shared-nonint-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/sub/non-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/xor/shell.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/xor/good-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/xor/bad-range.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/xor/shared-nonint-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/xor/non-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/and/shell.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/and/good-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/and/bad-range.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/and/shared-nonint-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/and/non-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/add/shell.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/add/good-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/add/bad-range.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/add/shared-nonint-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/add/non-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wait/shell.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wait/good-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wait/was-woken.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wait/no-spurious-wakeup.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wait/bad-range.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wait/shared-nonint-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wait/negative-timeout.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wait/non-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wait/did-timeout.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wait/nan-timeout.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wake/shell.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wake/good-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wake/wake-zero.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wake/wake-all-on-loc.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wake/bad-range.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wake/shared-nonint-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wake/wake-in-order.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wake/counts.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wake/wake-one.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wake/non-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wake/wake-nan.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wake/wake-all.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wake/wake-negative.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/wake/wake-two.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/or/shell.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/or/good-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/or/bad-range.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/or/shared-nonint-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/or/non-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/store/shell.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/store/good-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/store/bad-range.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/store/shared-nonint-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/Atomics/store/non-views.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-typedarray-backed-by-sharedarraybuffer.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-use-default-proto-if-custom-proto-is-not-object-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-excessive-offset-throws-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-byteoffset-is-symbol-throws-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-length-is-symbol-throws-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-defined-length-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-invoked-with-undefined-newtarget-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-bufferbyteoffset-throws-from-modulo-element-size-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-length-access-throws-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-use-custom-proto-if-object-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-defined-negative-length-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-toindex-bytelength-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-byteoffset-is-negative-throws-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/internals/Get/indexed-value-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-is-referenced-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-defined-length-and-offset-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-byteoffset-throws-from-modulo-element-size-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-defined-offset-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-proto-from-ctor-realm-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-toindex-byteoffset-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-new-instance-extensibility-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-excessive-length-throws-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-returns-new-instance-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-custom-proto-access-throws-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-byteoffset-to-number-throws-sab.js
+skip-if(!this.hasOwnProperty("SharedArrayBuffer")) script test262/built-ins/TypedArrays/buffer-arg-byteoffset-is-negative-zero-sab.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/Symbol.toStringTag.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/exchange/shell.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/exchange/good-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/exchange/descriptor.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/exchange/length.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/exchange/bad-range.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/exchange/shared-nonint-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/exchange/non-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/exchange/nonshared-int-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/exchange/name.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/load/shell.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/load/good-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/load/descriptor.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/load/length.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/load/bad-range.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/load/shared-nonint-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/load/non-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/load/nonshared-int-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/load/name.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/compareExchange/shell.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/compareExchange/good-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/compareExchange/descriptor.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/compareExchange/length.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/compareExchange/bad-range.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/compareExchange/shared-nonint-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/compareExchange/non-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/compareExchange/nonshared-int-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/compareExchange/name.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/sub/shell.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/sub/good-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/sub/descriptor.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/sub/length.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/sub/bad-range.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/sub/shared-nonint-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/sub/non-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/sub/nonshared-int-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/sub/name.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/xor/shell.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/xor/good-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/xor/descriptor.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/xor/length.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/xor/bad-range.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/xor/shared-nonint-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/xor/non-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/xor/nonshared-int-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/xor/name.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/and/shell.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/and/good-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/and/descriptor.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/and/length.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/and/bad-range.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/and/shared-nonint-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/and/non-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/and/nonshared-int-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/and/name.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/add/shell.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/add/good-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/add/descriptor.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/add/length.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/add/bad-range.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/add/shared-nonint-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/add/non-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/add/nonshared-int-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/add/name.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wait/shell.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wait/good-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wait/descriptor.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wait/length.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wait/was-woken.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wait/no-spurious-wakeup.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wait/bad-range.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wait/shared-nonint-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wait/negative-timeout.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wait/non-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wait/nonshared-int-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wait/did-timeout.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wait/nan-timeout.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wait/name.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/isLockFree/value.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/isLockFree/descriptor.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/isLockFree/length.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/isLockFree/corner-cases.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/isLockFree/name.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/prop-desc.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wake/shell.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wake/good-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wake/descriptor.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wake/length.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wake/wake-zero.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wake/wake-all-on-loc.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wake/bad-range.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wake/shared-nonint-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wake/wake-in-order.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wake/counts.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wake/wake-one.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wake/non-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wake/nonshared-int-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wake/wake-nan.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wake/wake-all.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wake/wake-negative.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wake/wake-two.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/wake/name.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/or/shell.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/or/good-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/or/descriptor.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/or/length.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/or/bad-range.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/or/shared-nonint-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/or/non-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/or/nonshared-int-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/or/name.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/proto.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/store/shell.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/store/good-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/store/descriptor.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/store/length.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/store/bad-range.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/store/shared-nonint-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/store/non-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/store/nonshared-int-views.js
+skip-if(!this.hasOwnProperty("Atomics")) script test262/built-ins/Atomics/store/name.js

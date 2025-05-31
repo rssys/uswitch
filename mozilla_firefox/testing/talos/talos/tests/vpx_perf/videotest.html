@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Test video page</title>
+    <script type="text/javascript" src="chrome://talos-powers-content/content/TalosContentProfiler.js"></script>
+</head>
+<body>
+    <video src='example.webm' alt='Test' controls>
+    <script type="text/javascript">
+        var delaySum = 0.0;
+        var samples = 0;
+        var v = document.getElementsByTagName("video")[0];
+        var shouldMeasure = false;
+        var start = 0;
+
+        function refreshLoop() {
+            window.requestAnimationFrame(() => {
+                delaySum += v.mozFrameDelay;
+                samples += 1;
+                document.title = "Delay: " + (1000 * delaySum/samples).toFixed(2) + " Max allowed: 16.67";
+                if (shouldMeasure) {
+                    refreshLoop();
+                }
+            });
+        }
+
+        v.addEventListener("play", function() {
+            shouldMeasure = true;
+            setTimeout(refreshLoop, 1000 /* 1sec */);
+        });
+
+        v.addEventListener("pause", function() {
+            shouldMeasure = false;
+            if (TalosContentProfiler) {
+                TalosContentProfiler.pause("video test finish", true).then(() => {
+                    var result = (1000 * delaySum/samples).toFixed(2);
+                    tpRecordTime(result, start);
+                    parent.reportResults(result, start);
+                });
+            }
+        });
+
+        addEventListener("load", function() {
+            if (TalosContentProfiler) {
+                TalosContentProfiler.resume("video test start", true).then(() => {
+                    start = new Date();
+                    v.play();
+                });
+            } else {
+                v.play();
+            }
+        });
+    </script>
+</body>
+</html>

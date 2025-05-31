@@ -1,0 +1,38 @@
+
+var ftGUID_5183696="50145020F9B966";
+var ftConfID_5183696="26051152";
+var ftParams_5183696="ftx=&fty=&ftadz=&ftscw=ebuy=25176923;esid=6522286;epid=305400033;ecid=142011256;eadv=4053494;eaid=497963285;erid=141810442;eexpid=;eexcid=;erv=1;eiid=CK749a21lPMCFQUcAQodyBII2Q;&ft_custom=4053494__25176923__6522286__142011256&ftOBA=1&ft_ifb=1&ft_domain=www.nytimes.com&ft_agentEnv=0&ft_referrer=https%3A%2F%2Fwww.nytimes.com%2F&ft_keyword=305400033&ft_section=%7C%7C305400033&gdpr=&gdpr_consent=&us_privacy=${US_PRIVACY}&cachebuster=359304.2797482637";
+var ftKeyword_5183696="305400033";
+var ftCustom_5183696="4053494__25176923__6522286__142011256";
+var ftSection_5183696="||305400033";
+var ftSegment_5183696="";
+var ftSegmentList_5183696=[];
+var ftRuleMatch_5183696="00011000";
+var ftTimestamp_5183696="1632376793";
+var ftGeoC2_5183696="us";
+var ftGeoState_5183696="in";
+var ftGeoCity_5183696="lafayette";
+var ftISP_5183696="comcast cable communications inc.";
+var ftSpeed_5183696="cable";
+var ftDMA_5183696="582";
+var ftLong_5183696="-86.89";
+var ftLat_5183696="40.42";
+var ftPostal_5183696="47901";
+var ftTimeZone_5183696="-400";
+var ftMobileCarrier_5183696="";
+var ftImp5183696 = {};
+ftImp5183696.privacy = "x";
+ftImp5183696.guidAge = "-1";
+ftImp5183696.impID = "8F7A4D18-C7AE-0855-95D9-386D8790B26F";
+ftImp5183696.duid = "FT:50145020F9B966";
+
+ftImp5183696.ft_tpplid = "";
+ftImp5183696.ft_c = {};
+ftImp5183696.gdpr = "";
+ftImp5183696.gdpr_consent = "";
+ftImp5183696.gdpr_pd = "";
+ftImp5183696.oob_consent = "";
+ftImp5183696.gdprStoredConsent = "";
+ftImp5183696.us_privacy = "!!US_PRIVACY!";
+
+document.write('<scr'+'ipt src="https://cdn.flashtalking.com/xre/518/5183696/3552321/js/j-5183696-3552321.js" id="ftscript_m5183696" name="ftscript_m5183696"></scr'+'ipt>');
